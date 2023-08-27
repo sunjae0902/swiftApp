@@ -8,24 +8,27 @@
 import SwiftUI
 
 struct ContentView: View {
-    let name = "sunjae"
-    var age = 21
-    let height: Double = 180.4
-    let status: Bool = true //상태이므로 description 사용->문자로 표현 가능
+    enum Sex: String {
+    case male = "남"
+    case female = "여"
+    }
+    @State var sex = Sex.female
     var body: some View {
-        VStack {
-            Text("name: \(name)")
-            Text("age: \(age)")
-            Text("height: \(height)")
-            Text("status: \(status.description)")
-          
-           
-            
+    VStack{
+        Text(sex.rawValue)
+        Button{
+            if(sex == Sex.female) {sex = .male}
+            else {sex = .female}
+       
+        } label: {
+            Text("change the value")
         }
         
-        .padding()
+        }
+        
     }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
